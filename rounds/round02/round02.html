@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100 Dias de Código - Jordy Araújo</title>
+    <link rel="icon" type="image/png" href="https://png.pngtree.com/element_our/sm/20180626/sm_5b321ca7a1ca4.png">
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>100 Dias de Código - Jordy Araújo</h1>
+    </header>
+    <nav>
+        <a href wm-nav="rounds/round01.html">Round 01</a> |
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        100 Dias de Código - Jordy Araújo
+    </footer>
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function(e) {
+                e.preventDefault()
+                fetch(link.getAttribute('wm-nav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100 Dias de Código - Jordy Araújo</title>
+    <link rel="icon" type="image/png" href="https://png.pngtree.com/element_our/sm/20180626/sm_5b321ca7a1ca4.png">
+    <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>100 Dias de Código - Jordy Araújo</h1>
+    </header>
+    <nav>
+        <ul class = "tree">
+            <li>
+                <span wm-folder><b>Round 01</b></span>
+                <ul>
+                    <li>
+                        <a href wm-nav="rounds/round01/logFiles/day00.html">Day 00</a>    
+                    </li>                
+                </ul>
+            </li>
 
+            <li>
+                <span wm-folder><b>Round 02</b></span>
+                <ul>
+                    <li>
+                        <a href wm-nav="rounds/round02/logFiles/day00.html">Day 00</a>    
+                    </li>                
+                </ul>
+            </li>
+
+        <!--    PARA ADICIONAR ROUNDS:
+                <li>
+                    <span wm-folder><b>Round XX</b></span>
+                    <ul>
+                        <li>
+                            <a href wm-nav="rounds/round02/logFiles/dayXX.html">Day XX</a>    
+                        </li>                
+                    </ul>
+                </li>
+        -->
+
+        </ul>
+    </nav>
+
+<script>
+    document.querySelectorAll('[wm-folder]').forEach(folder => {
+        folder.onclick = function (e) {
+            const ul = folder.nextElementSibling
+            const d = ul.style.display
+            ul.style.display = d === 'none' ? 'block' : 'none'
+        }
+    })
+</script>
+    <section id="conteudo"></section>
+    <footer>
+        <a href ="https://www.100daysofcode.com/">100 Days of Code</a> - <a href ="https://github.com/JordyAraujo">Jordy Araújo</a>
+    </footer>
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function(e) {
+                e.preventDefault()
+                fetch(link.getAttribute('wm-nav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+</body>
+</html>

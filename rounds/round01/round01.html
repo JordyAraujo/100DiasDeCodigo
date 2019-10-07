@@ -1,0 +1,18 @@
+<h1>Round 01:</h1>
+    <nav>
+        <a href wm-nav="logFiles/day00.html">Day 00</a>
+    </nav>
+    <section id="conteudo"></section>
+
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function(e) {
+                e.preventDefault()
+                fetch(link.getAttribute('wm-nav'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
